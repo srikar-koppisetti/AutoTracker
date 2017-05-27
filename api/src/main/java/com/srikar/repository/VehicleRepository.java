@@ -2,6 +2,7 @@ package com.srikar.repository;
 
 import java.util.List;
 
+import com.srikar.entity.Alert;
 import com.srikar.entity.Readings;
 import com.srikar.entity.Vehicle;
 
@@ -16,6 +17,8 @@ public interface VehicleRepository {
 	Vehicle findOne(String vin);
 
 	Readings addReadings(Readings readings);
+
+	Alert addAlert(Alert alert);
 	
 	
 }

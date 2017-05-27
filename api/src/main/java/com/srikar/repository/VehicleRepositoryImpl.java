@@ -8,6 +8,7 @@ import javax.persistence.TypedQuery;
 
 import org.springframework.stereotype.Repository;
 
+import com.srikar.entity.Alert;
 import com.srikar.entity.Readings;
 import com.srikar.entity.Vehicle;
 
@@ -44,6 +45,12 @@ public class VehicleRepositoryImpl implements VehicleRepository {
 		//em.persist(readings.getTires());
 		em.persist(readings);
 		return readings;
+	}
+
+	@Override
+	public Alert addAlert(Alert alert) {
+		em.persist(alert);
+		return alert;
 	}
 	
 	
