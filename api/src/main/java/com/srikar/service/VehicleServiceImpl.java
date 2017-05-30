@@ -2,9 +2,12 @@ package com.srikar.service;
 
 import java.util.List;
 
-
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,6 +22,9 @@ public class VehicleServiceImpl implements VehicleService{
 	@Autowired
 	private VehicleRepository repository;
 	
+	@Autowired
+	private JavaMailSender mailSender;
+		
 	@Override
 	@Transactional
 	public List<Vehicle> findAll() {
@@ -43,14 +49,19 @@ public class VehicleServiceImpl implements VehicleService{
 	@Override
 	@Transactional
 	public Readings addReadings(Readings readings) {	
-		alerts(readings);
+		try {
+			alerts(readings);
+		} catch (MessagingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return repository.addReadings(readings);
 	}
 
 
 	@Override
 	@Transactional
-	public void alerts(Readings readings) {
+	public void alerts(Readings readings) throws MessagingException {
 		String vinNumb = readings.getVin();
 		Vehicle vehicleDetails = repository.findOne(vinNumb);
 		
@@ -67,6 +78,21 @@ public class VehicleServiceImpl implements VehicleService{
 			repository.addAlert(alert);
 			
 			System.out.println("Check RPM, Alert=HIGH : EngineRpm = "+ readings.getEngineRpm() + " > RedLineRpm = "+ vehicleDetails.getRedlineRpm() + "VIN : "+ readings.getVin());
+			
+			
+			//Sending Email Alert
+			
+			MimeMessage message = mailSender.createMimeMessage();
+            MimeMessageHelper helper = new MimeMessageHelper(message,true,"UTF-8");
+            helper.setFrom("srikar.2412@gmail.com");
+            helper.setTo("srikar.tejasri@gmail.com");
+            helper.setSubject("Vehicle Alert : "+alert.getPriority());
+            String text = alert.getAlertMessage() + ". Vin Number : " + vehicleDetails.getVin() +" Vehicle Details : " + vehicleDetails.getMake()+" "+ vehicleDetails.getModel();
+            
+            helper.setText(text, true);
+            mailSender.send(message);
+	
+			
 		}
 		
 		//fuelVolume < 10% of maxFuelVolume p:MEDIUM
@@ -113,8 +139,4 @@ public class VehicleServiceImpl implements VehicleService{
 		}
 	}
 	
-	
-	
-	
-
 }
