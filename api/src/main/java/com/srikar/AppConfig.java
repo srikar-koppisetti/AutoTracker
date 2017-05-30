@@ -19,8 +19,8 @@ public class AppConfig {
 		JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
 		mailSender.setHost("smtp.gmail.com");
         mailSender.setPort(587);
-        mailSender.setUsername("srikar.2412@gmail.com");
-        mailSender.setPassword("Tejasri09");
+        mailSender.setUsername("from email");
+        mailSender.setPassword("*******");
         
         Properties javaMailProperties = new Properties();
         javaMailProperties.put("mail.smtp.starttls.enable", "true");
@@ -35,8 +35,8 @@ public class AppConfig {
 	
 	
 			/*spring.mail.host = smtp.gmail.com
-			spring.mail.username = sprikar.tejasri@gmail.com
-			spring.mail.password = Tejasri09
+			spring.mail.username = from email
+			spring.mail.password = ******
 
 			spring.mail.properties.mail.smtp.auth = true
 			spring.mail.properties.mail.smtp.socketFactory.port = 465

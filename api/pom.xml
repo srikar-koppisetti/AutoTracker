@@ -73,13 +73,6 @@
             <version>1.4.7</version>
         </dependency>
         
-        <!-- https://mvnrepository.com/artifact/org.springframework/spring-test -->
-<dependency>
-    <groupId>org.springframework</groupId>
-    <artifactId>spring-test</artifactId>
-    <version>3.2.3.RELEASE</version>
-</dependency>
-        
  
 	     
   </dependencies>
@@ -105,18 +98,6 @@
                     <failOnMissingWebXml>false</failOnMissingWebXml>
                 </configuration>
             </plugin>
-            <!-- <plugin>
-				<artifactId>maven-war-plugin</artifactId>
-				<version>2.1.1</version>
-				<configuration>
-					<packagingExcludes>WEB-INF/web.xml,WEB-INF/lib/geronimo-activation_1.1_spec-   
-					        1.0.1.jar, WEB-INF/lib/geronimo-javamail_1.4_spec-1.2.jar
-					</packagingExcludes>
-					<warName>SCTM_Retailer</warName>
-				</configuration>
-			</plugin> -->
-			
-			
 			
        </plugins>     
   </build>

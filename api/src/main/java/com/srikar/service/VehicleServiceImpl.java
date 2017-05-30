@@ -84,8 +84,8 @@ public class VehicleServiceImpl implements VehicleService{
 			
 			MimeMessage message = mailSender.createMimeMessage();
             MimeMessageHelper helper = new MimeMessageHelper(message,true,"UTF-8");
-            helper.setFrom("srikar.2412@gmail.com");
-            helper.setTo("srikar.tejasri@gmail.com");
+            helper.setFrom("from email");
+            helper.setTo("to email");
             helper.setSubject("Vehicle Alert : "+alert.getPriority());
             String text = alert.getAlertMessage() + ". Vin Number : " + vehicleDetails.getVin() +" Vehicle Details : " + vehicleDetails.getMake()+" "+ vehicleDetails.getModel();
             
