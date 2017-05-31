@@ -2,8 +2,6 @@ package com.srikar.entity;
 
 
 
-import java.util.Date;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,7 +14,7 @@ public class Alert {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
 	private String alertVin;
-	private Date alertTimeStamp;
+	private String alertTimeStamp;
 	private String alertMessage;
 	private String priority;
 	
@@ -33,10 +31,10 @@ public class Alert {
 		this.alertVin = alertVin;
 	}
 	
-	public Date getAlertTimeStamp() {
+	public String getAlertTimeStamp() {
 		return alertTimeStamp;
 	}
-	public void setAlertTimeStamp(Date alertTimeStamp) {
+	public void setAlertTimeStamp(String alertTimeStamp) {
 		this.alertTimeStamp = alertTimeStamp;
 	}
 	public String getAlertMessage() {

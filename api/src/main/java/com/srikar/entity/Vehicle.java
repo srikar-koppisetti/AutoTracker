@@ -1,7 +1,5 @@
 package com.srikar.entity;
 
-import java.util.Date;
-
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
@@ -23,12 +21,12 @@ public class Vehicle {
 	private int year;
 	private int redlineRpm;
 	private double maxFuelVolume;
-	private Date lastServiceDate;
+	private String lastServiceDate;
 	
-	public Date getLastServiceDate() {
+	public String getLastServiceDate() {
 		return lastServiceDate;
 	}
-	public void setLastServiceDate(Date lastServiceDate) {
+	public void setLastServiceDate(String lastServiceDate) {
 		this.lastServiceDate = lastServiceDate;
 	}
 	public int getYear() {

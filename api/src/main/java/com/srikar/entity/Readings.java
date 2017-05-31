@@ -1,7 +1,6 @@
 package com.srikar.entity;
 
 import java.math.BigDecimal;
-import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -23,7 +22,7 @@ public class Readings {
 	private BigDecimal latitude;
 	@Column(columnDefinition = "Decimal(10,6)")
 	private BigDecimal longitude;
-	private Date timestamp;
+	private String timestamp;
 	private double fuelVolume;
 	private int speed;
 	private int engineHp;
@@ -64,10 +63,10 @@ public class Readings {
 	}
 	
 	
-	public Date getTimestamp() {
+	public String getTimestamp() {
 		return timestamp;
 	}
-	public void setTimestamp(Date timestamp) {
+	public void setTimestamp(String timestamp) {
 		this.timestamp = timestamp;
 	}
 	public double getFuelVolume() {

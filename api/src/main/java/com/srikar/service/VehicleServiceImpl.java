@@ -1,5 +1,7 @@
 package com.srikar.service;
 
+import java.time.Clock;
+import java.time.ZonedDateTime;
 import java.util.List;
 
 import javax.mail.MessagingException;
@@ -14,6 +16,8 @@ import org.springframework.transaction.annotation.Transactional;
 import com.srikar.entity.Alert;
 import com.srikar.entity.Readings;
 import com.srikar.entity.Vehicle;
+import com.srikar.exception.VehicleBadRequestException;
+import com.srikar.exception.VehicleNotFoundException;
 import com.srikar.repository.VehicleRepository;
 
 @Service
@@ -35,6 +39,26 @@ public class VehicleServiceImpl implements VehicleService{
 	@Override
 	@Transactional
 	public Vehicle update(String vin, Vehicle vehicle) {
+		
+		String str = vehicle.getLastServiceDate();
+		ZonedDateTime lastServiceDate = ZonedDateTime.parse(str);
+		ZonedDateTime present = ZonedDateTime.now(Clock.systemUTC());
+		
+		if(vehicle.getYear()<1800 || vehicle.getYear() > 2017){
+			throw new VehicleBadRequestException("Vehicle Info : Year out of range.");
+		}
+		if(vehicle.getRedlineRpm() < 0){
+			throw new VehicleBadRequestException("Vehicle Info : Red Line RPM less than 0.");
+		}
+		if(vehicle.getMaxFuelVolume() < 0){
+			throw new VehicleBadRequestException("Vehicle Info : Max Fuel Volume less than 0.");
+		}
+		if(lastServiceDate.isAfter(present)){
+			throw new VehicleBadRequestException("Vehicle Info : Service time in the future.");
+		}
+		
+		
+		
 		Vehicle existing = repository.findOne(vin);
 		if(existing == null){
 			repository.create(vehicle);
@@ -52,7 +76,6 @@ public class VehicleServiceImpl implements VehicleService{
 		try {
 			alerts(readings);
 		} catch (MessagingException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return repository.addReadings(readings);
@@ -64,9 +87,36 @@ public class VehicleServiceImpl implements VehicleService{
 	public void alerts(Readings readings) throws MessagingException {
 		String vinNumb = readings.getVin();
 		Vehicle vehicleDetails = repository.findOne(vinNumb);
+		if(vehicleDetails == null){
+			throw new VehicleNotFoundException("Vehicle with VIN Number : "+ vinNumb +" Not Found");
+		}
+		if(readings.getFuelVolume() > vehicleDetails.getMaxFuelVolume()){
+			throw new VehicleBadRequestException("Readings : Fuel volume is greater than Maximum fuel volume.");
+		}
+		if(readings.getSpeed()<0){
+			throw new VehicleBadRequestException("Readings : Vehicle speed less than 0");
+		}
+		if(readings.getEngineRpm() < 0){
+			throw new VehicleBadRequestException("Readings : Vehicle RPM less than 0");
+		}
+		if(readings.getEngineHp() < 0){
+			throw new VehicleBadRequestException("Readings : Vehicle HP less than 0");
+		}
+		if(readings.getTires().getFrontLeft() < 0 || readings.getTires().getFrontRight() < 0
+				|| readings.getTires().getRearLeft() < 0 || readings.getTires().getRearRight() < 0){
+			throw new VehicleBadRequestException("Readings : One of the vehicle tire pressure is less than 0");
+		}
+		
+		String str = readings.getTimestamp();
+		ZonedDateTime readingTimeStamp = ZonedDateTime.parse(str);
+		ZonedDateTime present = ZonedDateTime.now(Clock.systemUTC());
+		
+		if(readingTimeStamp.isAfter(present)){
+			throw new VehicleBadRequestException("Readings : Vehicle Time Stamp is in the future.");
+		}
 		
 		
-		
+	
 		//engineRpm > readlineRpm p:HIGH
 		if(readings.getEngineRpm() > vehicleDetails.getRedlineRpm()){
 			
@@ -84,8 +134,8 @@ public class VehicleServiceImpl implements VehicleService{
 			
 			MimeMessage message = mailSender.createMimeMessage();
             MimeMessageHelper helper = new MimeMessageHelper(message,true,"UTF-8");
-            helper.setFrom("from email");
-            helper.setTo("to email");
+            helper.setFrom("from mail");
+            helper.setTo("to mail");
             helper.setSubject("Vehicle Alert : "+alert.getPriority());
             String text = alert.getAlertMessage() + ". Vin Number : " + vehicleDetails.getVin() +" Vehicle Details : " + vehicleDetails.getMake()+" "+ vehicleDetails.getModel();
             
