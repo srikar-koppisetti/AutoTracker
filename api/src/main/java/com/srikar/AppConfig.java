@@ -14,6 +14,8 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @EnableWebMvc
 public class AppConfig {
 	
+	
+	//set Email Alert properties
 	@Bean
 	public JavaMailSender getMailSender(){
 		JavaMailSenderImpl mailSender = new JavaMailSenderImpl();

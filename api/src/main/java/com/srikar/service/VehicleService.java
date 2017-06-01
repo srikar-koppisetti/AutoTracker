@@ -18,4 +18,6 @@ public interface VehicleService {
 	
 	void alerts(Readings readings) throws MessagingException;
 
+	//VehicleQuarantine vehicleQuarantine(VehicleQuarantine vehicleQuarantine);
+
 }

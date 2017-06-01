@@ -35,7 +35,7 @@ public class VehicleServiceImpl implements VehicleService{
 		return repository.findAll();
 	}
 
-
+	//Updates existing vehicles if already available else creates new ones 
 	@Override
 	@Transactional
 	public Vehicle update(String vin, Vehicle vehicle) {
@@ -70,6 +70,7 @@ public class VehicleServiceImpl implements VehicleService{
 	}
 
 
+	//Adds new readings 
 	@Override
 	@Transactional
 	public Readings addReadings(Readings readings) {	
@@ -81,7 +82,7 @@ public class VehicleServiceImpl implements VehicleService{
 		return repository.addReadings(readings);
 	}
 
-
+	//Checks for Alerts
 	@Override
 	@Transactional
 	public void alerts(Readings readings) throws MessagingException {
@@ -134,8 +135,8 @@ public class VehicleServiceImpl implements VehicleService{
 			
 			MimeMessage message = mailSender.createMimeMessage();
             MimeMessageHelper helper = new MimeMessageHelper(message,true,"UTF-8");
-            helper.setFrom("from mail");
-            helper.setTo("to mail");
+            helper.setFrom("from email");
+            helper.setTo("to email");
             helper.setSubject("Vehicle Alert : "+alert.getPriority());
             String text = alert.getAlertMessage() + ". Vin Number : " + vehicleDetails.getVin() +" Vehicle Details : " + vehicleDetails.getMake()+" "+ vehicleDetails.getModel();
             
@@ -188,5 +189,14 @@ public class VehicleServiceImpl implements VehicleService{
 			System.out.println("Check Coolent or Light, Alert = Low : EngineCoolentLow = "+readings.isEngineCoolantLow()+", CheckEngineLight = "+ readings.isCheckEngineLightOn() + "VIN : "+ readings.getVin() );
 		}
 	}
+
+
+	/*@Override
+	@Transactional
+	public VehicleQuarantine vehicleQuarantine(VehicleQuarantine vehicleQuarantine) {
+		System.out.println("Add Vehicle quarantine");
+		repository.addVehicleQuarantine(vehicleQuarantine);
+		return vehicleQuarantine;
+	}*/
 	
 }

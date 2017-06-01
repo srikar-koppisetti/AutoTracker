@@ -18,6 +18,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableTransactionManagement
 public class JPAConfig {
 	
+	
+	//JPA Configurations
 	@Bean
 	public LocalContainerEntityManagerFactoryBean emf(){
 		LocalContainerEntityManagerFactoryBean emf = new LocalContainerEntityManagerFactoryBean();

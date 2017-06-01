@@ -19,7 +19,7 @@ public class VehicleController {
 	@Autowired
 	private VehicleService service;
 	
-	
+	//Get all Vehicle details
 	@RequestMapping(method = RequestMethod.GET, value="vehicles",
 			produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public List<Vehicle> findAll(){
@@ -27,22 +27,34 @@ public class VehicleController {
 	}
 	
 	
+	//Updates existing vehicles if already available else creates new ones    
 	@RequestMapping(method = RequestMethod.PUT, value="vehicles",
 			produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public List<Vehicle> update(@RequestBody List<Vehicle> vehicle){
 		for(int i=0; i<vehicle.size();i++){
 			Vehicle newVehicle = vehicle.get(i);
 			String vin = newVehicle.getVin();
+		try{
 			service.update(vin,newVehicle);
+		}catch(Exception e){
+			System.out.println(e);
+			//service.vehicleQuarantine((VehicleQuarantine) newVehicle);
+		}
 		}
 		return vehicle;
 	}
 	
 	
+	//Adds new readings 
 	@RequestMapping(method = RequestMethod.POST, value="readings",
 			produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public Readings addReadings(@RequestBody Readings readings){
+		try{
 		service.addReadings(readings);
+		}
+		catch (Exception e){
+			System.out.println(e);
+		}
 		return readings;
 	}
 	

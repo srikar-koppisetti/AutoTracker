@@ -19,6 +19,8 @@ public interface VehicleRepository {
 	Readings addReadings(Readings readings);
 
 	Alert addAlert(Alert alert);
+
+	//VehicleQuarantine addVehicleQuarantine(VehicleQuarantine vehicleQuarantine);
 	
 	
 }
