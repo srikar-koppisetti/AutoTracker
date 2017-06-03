@@ -1,5 +1,8 @@
 package com.srikar.entity;
 
+import java.time.ZonedDateTime;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
@@ -21,12 +24,13 @@ public class Vehicle {
 	private int year;
 	private int redlineRpm;
 	private double maxFuelVolume;
-	private String lastServiceDate;
+	@Column(nullable = false)
+	private ZonedDateTime lastServiceDate;
 	
-	public String getLastServiceDate() {
+	public ZonedDateTime getLastServiceDate() {
 		return lastServiceDate;
 	}
-	public void setLastServiceDate(String lastServiceDate) {
+	public void setLastServiceDate(ZonedDateTime lastServiceDate) {
 		this.lastServiceDate = lastServiceDate;
 	}
 	public int getYear() {

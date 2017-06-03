@@ -1,6 +1,7 @@
 package com.srikar.entity;
 
 import java.math.BigDecimal;
+import java.time.ZonedDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -22,7 +23,7 @@ public class Readings {
 	private BigDecimal latitude;
 	@Column(columnDefinition = "Decimal(10,6)")
 	private BigDecimal longitude;
-	private String timestamp;
+	private ZonedDateTime timestamp;
 	private double fuelVolume;
 	private int speed;
 	private int engineHp;
@@ -63,10 +64,10 @@ public class Readings {
 	}
 	
 	
-	public String getTimestamp() {
+	public ZonedDateTime getTimestamp() {
 		return timestamp;
 	}
-	public void setTimestamp(String timestamp) {
+	public void setTimestamp(ZonedDateTime timestamp) {
 		this.timestamp = timestamp;
 	}
 	public double getFuelVolume() {

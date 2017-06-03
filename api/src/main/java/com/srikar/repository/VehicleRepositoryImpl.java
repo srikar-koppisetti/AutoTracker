@@ -59,6 +59,17 @@ public class VehicleRepositoryImpl implements VehicleRepository {
 		return alert;
 	}
 
+	
+	//get alerts of each vin
+	@Override
+	public List<Alert> findAlerts(String vin) {
+		System.out.println("Repo "+ vin);
+		TypedQuery<Alert> query = em.createNamedQuery("Alert.findAlerts", Alert.class);
+		query.setParameter("pVin", vin);
+		//List<Alert> list = query.getResultList();
+        return query.getResultList();
+	}
+
 	/*@Override
 	public VehicleQuarantine addVehicleQuarantine(VehicleQuarantine vehicleQuarantine) {
 		em.persist(vehicleQuarantine);		

@@ -40,8 +40,8 @@ public class VehicleServiceImpl implements VehicleService{
 	@Transactional
 	public Vehicle update(String vin, Vehicle vehicle) {
 		
-		String str = vehicle.getLastServiceDate();
-		ZonedDateTime lastServiceDate = ZonedDateTime.parse(str);
+		
+		ZonedDateTime lastServiceDate = vehicle.getLastServiceDate();
 		ZonedDateTime present = ZonedDateTime.now(Clock.systemUTC());
 		
 		if(vehicle.getYear()<1800 || vehicle.getYear() > 2017){
@@ -108,8 +108,8 @@ public class VehicleServiceImpl implements VehicleService{
 			throw new VehicleBadRequestException("Readings : One of the vehicle tire pressure is less than 0");
 		}
 		
-		String str = readings.getTimestamp();
-		ZonedDateTime readingTimeStamp = ZonedDateTime.parse(str);
+		
+		ZonedDateTime readingTimeStamp = readings.getTimestamp();
 		ZonedDateTime present = ZonedDateTime.now(Clock.systemUTC());
 		
 		if(readingTimeStamp.isAfter(present)){
@@ -135,7 +135,7 @@ public class VehicleServiceImpl implements VehicleService{
 			
 			MimeMessage message = mailSender.createMimeMessage();
             MimeMessageHelper helper = new MimeMessageHelper(message,true,"UTF-8");
-            helper.setFrom("from email");
+            helper.setFrom("your email");
             helper.setTo("to email");
             helper.setSubject("Vehicle Alert : "+alert.getPriority());
             String text = alert.getAlertMessage() + ". Vin Number : " + vehicleDetails.getVin() +" Vehicle Details : " + vehicleDetails.getMake()+" "+ vehicleDetails.getModel();
@@ -188,6 +188,15 @@ public class VehicleServiceImpl implements VehicleService{
 			
 			System.out.println("Check Coolent or Light, Alert = Low : EngineCoolentLow = "+readings.isEngineCoolantLow()+", CheckEngineLight = "+ readings.isCheckEngineLightOn() + "VIN : "+ readings.getVin() );
 		}
+	}
+
+	
+	//get alerts of each vin
+	@Override
+	@Transactional
+	public List<Alert> findAlerts(String vin) {
+		System.out.println("Service "+ vin);
+		return repository.findAlerts(vin);
 	}
 
 

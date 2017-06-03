@@ -2,19 +2,28 @@ package com.srikar.entity;
 
 
 
+import java.time.ZonedDateTime;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 @Entity
+@NamedQueries({
+    @NamedQuery(name = "Alert.findAlerts",
+                query = "SELECT alert FROM Alert alert WHERE alert.alertVin = :pVin")
+    
+})
 public class Alert {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
 	private String alertVin;
-	private String alertTimeStamp;
+	private ZonedDateTime alertTimeStamp;
 	private String alertMessage;
 	private String priority;
 	
@@ -31,10 +40,10 @@ public class Alert {
 		this.alertVin = alertVin;
 	}
 	
-	public String getAlertTimeStamp() {
+	public ZonedDateTime getAlertTimeStamp() {
 		return alertTimeStamp;
 	}
-	public void setAlertTimeStamp(String alertTimeStamp) {
+	public void setAlertTimeStamp(ZonedDateTime alertTimeStamp) {
 		this.alertTimeStamp = alertTimeStamp;
 	}
 	public String getAlertMessage() {

@@ -20,6 +20,8 @@ public interface VehicleRepository {
 
 	Alert addAlert(Alert alert);
 
+	List<Alert> findAlerts(String vin);
+
 	//VehicleQuarantine addVehicleQuarantine(VehicleQuarantine vehicleQuarantine);
 	
 	
