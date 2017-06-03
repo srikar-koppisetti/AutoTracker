@@ -22,6 +22,10 @@ public interface VehicleRepository {
 
 	List<Alert> findAlerts(String vin);
 
+	List<Alert> highAlerts();
+
+	List<Readings> getReadings(String vin, int minutes);
+
 	//VehicleQuarantine addVehicleQuarantine(VehicleQuarantine vehicleQuarantine);
 	
 	

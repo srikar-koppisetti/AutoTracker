@@ -8,11 +8,18 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.MapsId;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 
 
 
 @Entity
+@NamedQueries({
+	@NamedQuery(name="Readings.getReadings",
+			query = "SELECT readings FROM Readings readings WHERE readings.timestamp > :pTime AND readings.vin = :pVin")
+})
+//SELECT readings FROM Readings readings WHERE readings.timestamp > :pTime AND readings.vin = :pVin
 public class Readings {
 	
 	@Id
@@ -32,7 +39,7 @@ public class Readings {
 	private boolean cruiseControlOn;
 	private int engineRpm;
 	
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne(fetch = FetchType.EAGER)
 	@MapsId
 	private Tires tires;
 	

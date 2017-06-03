@@ -195,8 +195,21 @@ public class VehicleServiceImpl implements VehicleService{
 	@Override
 	@Transactional
 	public List<Alert> findAlerts(String vin) {
-		System.out.println("Service "+ vin);
+		
 		return repository.findAlerts(vin);
+	}
+
+	//high alerts in last two hours
+	@Override
+	public List<Alert> highAlerts() {
+		return repository.highAlerts();
+	}
+
+	//readings of vehicle with vin and time
+	@Override
+	@Transactional
+	public List<Readings> getReadings(String vin,int minutes) {
+		return repository.getReadings(vin,minutes);
 	}
 
 

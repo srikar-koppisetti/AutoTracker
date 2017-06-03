@@ -64,10 +64,24 @@ public class VehicleController {
 	@RequestMapping(method = RequestMethod.GET, value = "alerts/{vin}",
 			produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public List<Alert> findAlerts(@PathVariable("vin") String carVin){
-		System.out.println("Controller "+ carVin);
-		return service.findAlerts(carVin);
 		
+		return service.findAlerts(carVin);	
 	}
+	
+	//high alerts in last two hours
+	@RequestMapping(method = RequestMethod.GET, value="highAlerts",
+			produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public List<Alert> highAlerts(){
+		return service.highAlerts();
+	}
+	
+	//readings of vehicle with vin and time
+	@RequestMapping(method = RequestMethod.GET, value="readings/{vin}/time/{min}",
+				produces  = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public List<Readings> getReadings(@PathVariable("vin")  String carVin, @PathVariable("min") int minutes){
+		return service.getReadings(carVin,minutes);
+	}
+	
 	
 	
 }

@@ -1,5 +1,8 @@
 package com.srikar.repository;
 
+import java.time.Clock;
+import java.time.ZonedDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -63,11 +66,31 @@ public class VehicleRepositoryImpl implements VehicleRepository {
 	//get alerts of each vin
 	@Override
 	public List<Alert> findAlerts(String vin) {
-		System.out.println("Repo "+ vin);
+		
 		TypedQuery<Alert> query = em.createNamedQuery("Alert.findAlerts", Alert.class);
 		query.setParameter("pVin", vin);
-		//List<Alert> list = query.getResultList();
+		
         return query.getResultList();
+	}
+
+	//high alerts in last two hours
+	@Override
+	public List<Alert> highAlerts() {
+		TypedQuery<Alert> query = em.createNamedQuery("Alert.highAlerts",Alert.class);
+		ZonedDateTime last = ZonedDateTime.now(Clock.systemUTC()).minus(1, ChronoUnit.HOURS);
+		query.setParameter("pTime", last );
+		query.setParameter("pPriority", "HIGH");
+		return query.getResultList();
+	}
+
+	//readings of vehicle with vin and time
+	@Override
+	public List<Readings> getReadings(String vin, int minutes) {
+		TypedQuery<Readings> query = em.createNamedQuery("Readings.getReadings", Readings.class);
+		ZonedDateTime last = ZonedDateTime.now(Clock.systemUTC()).minus(minutes, ChronoUnit.MINUTES);
+		query.setParameter("pTime", last);
+		query.setParameter("pVin", vin);
+		return query.getResultList();
 	}
 
 	/*@Override

@@ -14,7 +14,9 @@ import javax.persistence.NamedQuery;
 @Entity
 @NamedQueries({
     @NamedQuery(name = "Alert.findAlerts",
-                query = "SELECT alert FROM Alert alert WHERE alert.alertVin = :pVin")
+                query = "SELECT alert FROM Alert alert WHERE alert.alertVin = :pVin"),
+    @NamedQuery(name = "Alert.highAlerts",
+    			query = "SELECT alert FROM Alert alert WHERE alert.alertTimeStamp > :pTime AND alert.priority = :pPriority")
     
 })
 public class Alert {
