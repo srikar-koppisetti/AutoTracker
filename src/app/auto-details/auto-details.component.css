@@ -1,0 +1,20 @@
+.table-head{
+  background-color: #321F45;
+  color: #E8DFF0;
+}
+
+h2{
+  color: #521491;
+}
+
+p{
+  color: #521491;
+}
+
+.table td{
+  text-align: center;
+}
+
+.table th{
+  text-align: center;
+}
