@@ -7,16 +7,24 @@ import { Routes, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { AutoDetailsComponent } from './auto-details/auto-details.component';
 import { AutoDetailService } from './auto-details/auto-details.service';
+import { AlertsComponent } from './alerts/alerts.component';
+import { AlertsService } from './alerts/alerts.service';
+
+
+
 
 const appRoutes: Routes = [
-  { path: 'vehicles', component: AutoDetailsComponent }
+  { path: 'vehicles', component: AutoDetailsComponent },
+  { path: 'alerts', component: AlertsComponent },
+
 ];
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    AutoDetailsComponent
+    AutoDetailsComponent,
+    AlertsComponent,
   ],
   imports: [
     BrowserModule,
@@ -24,7 +32,7 @@ const appRoutes: Routes = [
     HttpModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [AutoDetailService],
+  providers: [AutoDetailService, AlertsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

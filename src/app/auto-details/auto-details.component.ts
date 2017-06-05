@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AutoDetailService } from './auto-details.service';
-import { Response } from '@angular/http';
+
 import 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 
