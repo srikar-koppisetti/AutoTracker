@@ -9,7 +9,7 @@ export class AlertsService{
 
   constructor(private http: Http){}
 
-  getServers(){
+  getHighAlerts(){
     return this.http.get('http://localhost:8080/api/api/highAlerts')
       .map(
         (response: Response) => {
@@ -19,4 +19,13 @@ export class AlertsService{
       );
   }
 
+  getVinAlerts(vin : String){
+    return this.http.get('http://localhost:8080/api/api/alerts/'+vin)
+      .map(
+        (response: Response) => {
+          const data = response.json();
+          return data;
+        }
+      );
+  }
 }

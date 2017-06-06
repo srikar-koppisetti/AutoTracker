@@ -1,36 +1,82 @@
 
 
-<div class="row">
-  <div class="col-xs-4">
-    <p>Click <button class="btn btn-primary" (click)="onGetHistorical()">Get Alerts</button> to get all historical alerts.</p>
-  </div>
-  <div class="col-xs-8">
-    <p>Click <button class="btn btn-primary" (click)="onGetPeriod()">Get Alerts</button> to get all high alerts in last 2 Hours.</p>
+<div class="row" >
+    <h1 class="text-center"><strong>ALERTS</strong></h1>
     <div class="row">
       <div class="col-xs-9">
-        <table class="table table-hover">
+        <p>To know all historical alerts of specific vehicle. Select the vehicle name and click GET HISTORY</p>
+        <form>
+          <div class="form-group">
+            <label for="">Select Vehicle</label>
+            <select class="form-control" name="vinNumber" [(ngModel)]="vin" >
+              <option value='1FMYU02143KB34432'>FORD ESCAPE (VIN: 1FMYU02143KB34432)</option>
+              <option value='1HGCR2F3XFA027534'>HONDA	ACCORD (VIN: 1HGCR2F3XFA027534)</option>
+              <option value='1VWAP7A35CC020276'>VOLKSWAGEN	PASSAT (VIN: 1VWAP7A35CC020276)</option>
+              <option value='1ZVBP8JS8A5159269'>FORD	MUSTANG (VIN: 1ZVBP8JS8A5159269)</option>
+              <option value='2T1BU4EE4DC919097'>TOYOTA	COROLLA (VIN: 2T1BU4EE4DC919097)</option>
+              <option value='3GCRKSE30AG105585'>CHEVROLET	SILVERADO (VIN: 3GCRKSE30AG105585)</option>
+              <option value='5J6RM3H50DL032829'>HONDA	CR-V (VIN: 5J6RM3H50DL032829)</option>
+              <option value='WA1CMAFE6BD002500'>AUDI	Q7 (VIN: WA1CMAFE6BD002500</option>
+              <option value='WBAFR1C50BC747531'>BMW	528 (VIN: WBAFR1C50BC747531)</option>
+              <option value='WP1AB29P63LA60179'>PORSCHE	CAYENNE (VIN: WP1AB29P63LA60179)</option>
+            </select>
+          </div>
+          <button class="btn btn-primary" (click)="onGetVinAlert()">GET HISTORY</button>
+        </form>
+
+        <p *ngIf="display">Total number of alerts for vehicle with VIN Number: {{vin}} are {{vinAlerts.length}}</p>
+
+
+        <table *ngIf="display" class="table table-hover table-inverse">
           <thead >
-          <tr class="table-head" >
-            <th>Vin</th>
-            <th>Time Stamp</th>
-            <th>Message</th>
-          </tr>
+            <tr class="table-head" >
+              <th>Priority</th>
+              <th>Time Stamp</th>
+              <th>Message</th>
+            </tr>
           </thead>
+
           <tbody>
-          <tr *ngFor="let alert of alerts">
-            <th scope="row">{{alert.alertVin}}</th>
-            <td>{{alert.alertTimeStamp * 1000 | date:'fullDate' }}</td>
-            <td>{{alert.alertMessage}}</td>
-          </tr>
+            <tr *ngFor="let alert of vinAlerts">
+              <th scope="row">{{alert.priority}}</th>
+              <td>{{alert.alertTimeStamp * 1000 | date:'fullDate' }}</td>
+              <td>{{alert.alertMessage}}</td>
+            </tr>
           </tbody>
         </table>
+
+        <!--<table class="table table-hover table-inverse">-->
+          <!--<thead >-->
+          <!--<tr class="table-head" >-->
+            <!--<th>Vin</th>-->
+            <!--<th>Time Stamp</th>-->
+            <!--<th>Message</th>-->
+          <!--</tr>-->
+          <!--</thead>-->
+          <!--<tbody>-->
+          <!--<tr *ngFor="let alert of alerts">-->
+            <!--<th scope="row">{{alert.alertVin}}</th>-->
+            <!--<td>{{alert.alertTimeStamp * 1000 | date:'fullDate' }}</td>-->
+            <!--<td>{{alert.alertMessage}}</td>-->
+          <!--</tr>-->
+          <!--</tbody>-->
+        <!--</table>-->
+        <button class="btn btn-primary pull-right" (click)="onClickTop()">Page Top</button>
       </div>
-      <div class="col-xs-3">
-        <h1 class="text-center">{{alerts.length}}</h1>
-        <p class="text-center">High Alerts</p>
-        <h6 class="text-center">(2 Hours)</h6>
+      <br>
+      <div class="col-xs-3 count text-center">
+        <p ><button class="btn btn-primary" (click)="onGetPeriod()">Get High Alerts</button> in last <br> 2 Hours.</p>
+        <h1 >{{alerts.length}}</h1>
+        <p >High Alerts</p>
+        <h6 >(2 Hours)</h6>
       </div>
+
     </div>
+</div>
+<hr>
+<div class="row">
+  <div >
+
 
   </div>
 </div>

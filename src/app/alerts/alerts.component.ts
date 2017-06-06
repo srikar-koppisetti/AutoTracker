@@ -14,16 +14,37 @@ export class AlertsComponent implements OnInit {
 
   alerts = [];
 
+  vinAlerts = [];
+
+  vin = '';
+
+  display = false;
+
   constructor(private alertsService: AlertsService) { }
 
   onGetPeriod(){
-    this.alertsService.getServers()
+    this.alertsService.getHighAlerts()
       .subscribe(
         (data: any[]) => this.alerts = data,
         (error) => console.log(error)
       );
   }
 
+
+  onGetVinAlert(){
+    this.alertsService.getVinAlerts(this.vin)
+      .subscribe(
+        (data: any[]) => this.vinAlerts = data,
+        (error) => console.log(error)
+      );
+
+    this.display = true;
+  }
+
+
+  onClickTop(){
+    document.body.scrollTop = document.documentElement.scrollTop = 0;
+  }
 
 
   ngOnInit() {
