@@ -1,0 +1,32 @@
+.fill-form{
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+h1{
+  color: #151567;
+}
+
+.fill-form p, label {
+  color : #521491;
+}
+
+.jumbotron {
+  background-color: #E7E6F6;
+  background-image: url('https://static.pexels.com/photos/1329/city-streets-skyline-buildings.jpg');
+  height: 800px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 0;
+  padding: 1px;
+}
+
+.jumbotron .container{
+  position: relative;
+  top: 100px;
+}
+
+h3{
+  color: #12128D;
+}
+

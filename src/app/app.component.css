@@ -10,7 +10,8 @@
   color: #321F45; /*BACKGROUND color for active*/
   background-color: #321F45;
   border-radius: 0px;
-
+  margin: 0;
+  padding: 1px;
 }
 
 .navbar-default .navbar-nav > li > a {

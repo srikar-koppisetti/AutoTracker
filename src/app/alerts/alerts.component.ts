@@ -1,9 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Pipe, PipeTransform} from '@angular/core';
 import { AlertsService } from './alerts.service';
 
 
 import 'rxjs/Rx';
 import 'rxjs/add/operator/map';
+
+@Pipe({
+  name: 'reverse'
+})
+export class ReversePipe{
+  transform(value) {
+    return value.slice().reverse();
+  }
+}
 
 @Component({
   selector: 'app-alerts',
@@ -53,3 +62,5 @@ export class AlertsComponent implements OnInit {
   }
 
 }
+
+

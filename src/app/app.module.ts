@@ -13,6 +13,8 @@ import { AutoGraphsComponent } from './auto-graphs/auto-graphs.component';
 import { AutoGraphsService } from './auto-graphs/auto-graphs.service';
 import {ChartsModule} from 'ng2-charts';
 import { AutoMapsComponent } from './auto-maps/auto-maps.component';
+import {AutoMapService} from './auto-maps/auto-maps.service';
+import { AgmCoreModule } from 'angular2-google-maps/core';
 
 
 
@@ -38,9 +40,12 @@ const appRoutes: Routes = [
     FormsModule,
     HttpModule,
     RouterModule.forRoot(appRoutes),
-    ChartsModule
+    ChartsModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyALyDAVaAUVzcsAsplI8cHkW1BHlW0BHS8'
+    })
   ],
-  providers: [AutoDetailService, AlertsService, AutoGraphsService],
+  providers: [AutoDetailService, AlertsService, AutoGraphsService, AutoMapService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

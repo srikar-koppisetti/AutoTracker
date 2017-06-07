@@ -18,3 +18,27 @@ p{
 .table th{
   text-align: center;
 }
+
+.jumbotron {
+  background-color: #E7E6F6;
+  background-image: url('https://static.pexels.com/photos/63294/autos-technology-vw-multi-storey-car-park-63294.jpeg');
+  height: 450px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 0;
+  padding: 1px;
+}
+
+.jumbotron h1{
+  color: #321F45;
+}
+
+.transparent{
+  background-color: rgba(254,254,254,0.8);
+}
+
+.panel{
+  background-color: transparent;
+  border: 1px #222;
+  padding-top: 100px;
+}

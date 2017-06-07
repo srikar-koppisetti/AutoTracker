@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import {AutoMapService} from './auto-maps.service';
+
+import 'rxjs/Rx';
+import 'rxjs/add/operator/map';
+
 
 @Component({
   selector: 'app-auto-maps',
@@ -7,7 +12,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AutoMapsComponent implements OnInit {
 
-  constructor() { }
+  vin = '';
+
+  time = 0;
+
+  readings = [];
+
+  zoom: number = 1;
+
+  lat: number = 38.8799700;
+  lng: number = -77.1067700;
+
+
+
+  constructor(private autoMapService: AutoMapService){}
+
+  onGetReadings(){
+    this.autoMapService.getVehicleLocation(this.vin, this.time)
+      .subscribe(
+        (data: any[]) => this.readings = data,
+        (error) => console.log(error),
+      );
+
+  }
 
   ngOnInit() {
   }

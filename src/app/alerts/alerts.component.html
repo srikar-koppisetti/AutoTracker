@@ -1,10 +1,22 @@
+<div class="jumbotron">
+  <div class="container">
+    <div class="panel panel-default col-sm-9">
+      <div class="panel-body transparent">
+        <h1>ALERTS</h1>
+        <p>We save all the vehicle alerts in <strong><u>AutoTracker</u></strong>.</p>
+        <ul>
+          <li>To know all historical alerts of specific vehicle. Select <strong>Vehicle Name</strong> and click
+            <strong>GET HISTORY</strong></li>
+          <li>To know number of <strong>High Alerts</strong> in last <strong>2 Hours</strong> click <strong>GET HIGH ALERTS</strong></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
 
-
-<div class="row" >
-    <h1 class="text-center"><strong>ALERTS</strong></h1>
+<div class="container alert" >
     <div class="row">
       <div class="col-xs-9">
-        <p>To know all historical alerts of specific vehicle. Select the vehicle name and click GET HISTORY</p>
         <form>
           <div class="form-group">
             <label for="">Select Vehicle</label>
@@ -23,10 +35,6 @@
           </div>
           <button class="btn btn-primary" (click)="onGetVinAlert()">GET HISTORY</button>
         </form>
-
-        <p *ngIf="display">Total number of alerts for vehicle with VIN Number: {{vin}} are {{vinAlerts.length}}</p>
-
-
         <table *ngIf="display" class="table table-hover table-inverse">
           <thead >
             <tr class="table-head" >
@@ -37,7 +45,7 @@
           </thead>
 
           <tbody>
-            <tr *ngFor="let alert of vinAlerts">
+            <tr *ngFor="let alert of vinAlerts.slice().reverse()">
               <th scope="row">{{alert.priority}}</th>
               <td>{{alert.alertTimeStamp * 1000 | date:'fullDate' }}</td>
               <td>{{alert.alertMessage}}</td>
@@ -48,7 +56,7 @@
       </div>
       <br>
       <div class="col-xs-3 count text-center">
-        <p ><button class="btn btn-primary" (click)="onGetPeriod()">Get High Alerts</button> in last <br> 2 Hours.</p>
+        <p ><button class="btn btn-primary" (click)="onGetPeriod()">GET HIGH ALERTS</button> in last <br> 2 Hours.</p>
         <h1 >{{alerts.length}}</h1>
         <p >High Alerts</p>
         <h6 >(2 Hours)</h6>
