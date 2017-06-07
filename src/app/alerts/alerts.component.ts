@@ -37,8 +37,10 @@ export class AlertsComponent implements OnInit {
         (data: any[]) => this.vinAlerts = data,
         (error) => console.log(error)
       );
+    if(this.vinAlerts != null){
+      this.display = true;
+    }
 
-    this.display = true;
   }
 
 
