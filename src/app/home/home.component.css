@@ -1,0 +1,53 @@
+.container{
+  margin: 0;
+  padding: 0;
+  background-attachment: fixed;
+  background-size: cover;
+  background: #333;
+}
+
+#video-background {
+  /*  making the video fullscreen  */
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: 1;
+}
+
+.video p{
+  font-size: 22px;
+  color: white;
+  z-index: 2;
+  position: relative;
+}
+
+.video p strong{
+  color: white;
+}
+
+h1{
+  font-size: 78px;
+  color: white;
+  margin-top: 270px;
+  z-index: 2;
+  position: relative;
+}
+
+.info{
+  margin-top: 200px;
+  background-color: #E7E6F6;
+  color: white;
+  z-index: 2;
+  position: absolute;
+}
+
+.tabs{
+  background-color: red;
+  color: white;
+  z-index: 2;
+  position: absolute;
+}

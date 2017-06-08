@@ -22,7 +22,7 @@
 
 .jumbotron {
   background-color: #E7E6F6;
-  background-image: url('https://static.pexels.com/photos/197358/pexels-photo-197358.jpeg');
+  background-image: url('/assets/images/performance.jpeg');
   height: 450px;
   background-repeat: no-repeat;
   background-size: cover;

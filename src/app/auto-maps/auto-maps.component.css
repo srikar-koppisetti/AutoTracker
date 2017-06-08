@@ -4,7 +4,7 @@
 }
 
 h1{
-  color: #151567;
+  color: #321F45;
 }
 
 .fill-form p, label {
@@ -13,12 +13,13 @@ h1{
 
 .jumbotron {
   background-color: #E7E6F6;
-  background-image: url('https://static.pexels.com/photos/1329/city-streets-skyline-buildings.jpg');
-  height: 800px;
+  background-image: url('/assets/images/maps.jpg');
+  height: 1000px;
   background-repeat: no-repeat;
   background-size: cover;
   margin: 0;
   padding: 1px;
+  margin-bottom:0;
 }
 
 .jumbotron .container{

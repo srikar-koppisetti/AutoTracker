@@ -15,11 +15,14 @@ import {ChartsModule} from 'ng2-charts';
 import { AutoMapsComponent } from './auto-maps/auto-maps.component';
 import {AutoMapService} from './auto-maps/auto-maps.service';
 import { AgmCoreModule } from 'angular2-google-maps/core';
+import { HomeComponent } from './home/home.component';
+
 
 
 
 
 const appRoutes: Routes = [
+  { path: '', component: HomeComponent },
   { path: 'vehicles', component: AutoDetailsComponent },
   { path: 'alerts', component: AlertsComponent },
   { path: 'graphs', component: AutoGraphsComponent },
@@ -34,6 +37,7 @@ const appRoutes: Routes = [
     AlertsComponent,
     AutoGraphsComponent,
     AutoMapsComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

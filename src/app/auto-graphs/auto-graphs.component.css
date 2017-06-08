@@ -13,7 +13,7 @@ h1{
 
 .jumbotron {
   background-color: #E7E6F6;
-  background-image: url('https://static.pexels.com/photos/65623/vehicle-chrome-technology-automobile-65623.jpeg');
+  background-image: url('/assets/images/performance.blue.jpeg');
   height: 900px;
   background-repeat: no-repeat;
   background-size: cover;
@@ -36,7 +36,7 @@ p{
 
 
 .transparent{
-  background-color: rgba(254,254,254,0.5);
+  background-color: rgba(254,254,254,0.8);
 }
 
 .panel{
