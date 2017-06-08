@@ -77,7 +77,7 @@ public class VehicleRepositoryImpl implements VehicleRepository {
 	@Override
 	public List<Alert> highAlerts() {
 		TypedQuery<Alert> query = em.createNamedQuery("Alert.highAlerts",Alert.class);
-		ZonedDateTime last = ZonedDateTime.now(Clock.systemUTC()).minus(1, ChronoUnit.HOURS);
+		ZonedDateTime last = ZonedDateTime.now(Clock.systemUTC()).minus(2, ChronoUnit.HOURS);
 		query.setParameter("pTime", last );
 		query.setParameter("pPriority", "HIGH");
 		return query.getResultList();

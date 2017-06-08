@@ -2,9 +2,12 @@ package com.srikar;
 
 import java.util.Properties;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.env.Environment;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -12,8 +15,11 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @Configuration
 @ComponentScan
 @EnableWebMvc
+@PropertySource(value = "classpath:application.properties")
 public class AppConfig {
 	
+	@Autowired
+	private Environment env;
 	
 	//set Email Alert properties
 	@Bean
@@ -21,8 +27,8 @@ public class AppConfig {
 		JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
 		mailSender.setHost("smtp.gmail.com");
         mailSender.setPort(587);
-        mailSender.setUsername("your email");
-        mailSender.setPassword("your email password");
+        mailSender.setUsername(env.getProperty("mail.owner"));
+        mailSender.setPassword(env.getProperty("mail.owner_password"));
         
         Properties javaMailProperties = new Properties();
         javaMailProperties.put("mail.smtp.starttls.enable", "true");

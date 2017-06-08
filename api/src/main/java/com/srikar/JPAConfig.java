@@ -5,8 +5,12 @@ import java.util.Properties;
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.env.Environment;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
@@ -16,8 +20,11 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @EnableTransactionManagement
+@PropertySource(value = "classpath:application.properties")
 public class JPAConfig {
 	
+	@Autowired
+	private Environment env;
 	
 	//JPA Configurations
 	@Bean
@@ -34,9 +41,9 @@ public class JPAConfig {
     public DataSource dataSource() {
         DriverManagerDataSource ds = new DriverManagerDataSource();
         ds.setDriverClassName("com.mysql.cj.jdbc.Driver");
-        ds.setUrl("jdbc:mysql://localhost:3306/feedback?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC");
-        ds.setUsername("root");
-        ds.setPassword("slash");
+        ds.setUrl(env.getProperty("db.url"));
+        ds.setUsername(env.getProperty("db.user"));
+        ds.setPassword(env.getProperty("db.password"));
         return ds;
     }
 
@@ -50,7 +57,7 @@ public class JPAConfig {
         Properties props = new Properties();
         props.put("hibernate.dialect", "org.hibernate.dialect.MySQL57Dialect");
         props.put("hibernate.show_sql", "true");
-        props.put("hibernate.hbm2ddl.auto", "validate");
+        props.put("hibernate.hbm2ddl.auto", env.getProperty("hibernate.ddl"));
         return props;
     }
     

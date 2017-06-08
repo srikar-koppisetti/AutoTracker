@@ -13,7 +13,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 	@Override
 	public void addCorsMappings(CorsRegistry registry) {
 		registry.addMapping("/**")
-				.allowedOrigins("http://mocker.egen.io")
+				.allowedOrigins("http://mocker.egen.io","http://localhost:4200")
 				.allowedMethods("PUT", "GET","POST","DELETE");
 			
 	}

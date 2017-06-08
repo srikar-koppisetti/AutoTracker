@@ -8,6 +8,7 @@ import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
@@ -28,6 +29,9 @@ public class VehicleServiceImpl implements VehicleService{
 	
 	@Autowired
 	private JavaMailSender mailSender;
+	
+	@Autowired
+	private Environment env;
 		
 	@Override
 	@Transactional
@@ -135,8 +139,8 @@ public class VehicleServiceImpl implements VehicleService{
 			
 			MimeMessage message = mailSender.createMimeMessage();
             MimeMessageHelper helper = new MimeMessageHelper(message,true,"UTF-8");
-            helper.setFrom("your email");
-            helper.setTo("to email");
+            helper.setFrom(env.getProperty("mail.owner"));
+            helper.setTo(env.getProperty("mail.to"));
             helper.setSubject("Vehicle Alert : "+alert.getPriority());
             String text = alert.getAlertMessage() + ". Vin Number : " + vehicleDetails.getVin() +" Vehicle Details : " + vehicleDetails.getMake()+" "+ vehicleDetails.getModel();
             
