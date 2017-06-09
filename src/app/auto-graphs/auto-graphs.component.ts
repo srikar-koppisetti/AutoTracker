@@ -25,11 +25,12 @@ export class AutoGraphsComponent implements OnInit {
   onGetReadings(signal: string){
     this.autoGraphsService.getVehicleReadings(this.vin, this.time)
     .subscribe(
-        (data: any[]) => {this.readings=data;this.generateGraph(signal);},
+        (data: any[]) => {this.readings=data; this.generateGraph(signal);},
         (error) => console.log(error),
       );
 
   }
+
 
 
   public lineChartData: Array<any> = [
@@ -75,19 +76,21 @@ export class AutoGraphsComponent implements OnInit {
     }
     this.lineChartData = _lineChartData;
 
+    this.lineChartLabels.length = 0;
+
     for (let k = 0; k < this.readings.length; k++) {
       this.lineChartLabels.push(k);
     }
 
     console.log(this.lineChartLabels);
 
-    this.lineChartLabels = [];
-    this.lineChartLabels = [];
+
 
     this.time = null;
     this.signal = null;
 
   }
+
 
   ngOnInit() {
   }

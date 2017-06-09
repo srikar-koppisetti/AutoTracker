@@ -9,6 +9,10 @@ export class HomeComponent implements OnInit {
 
   constructor() { }
 
+  onClick(){
+    document.body.scrollTop = document.documentElement.scrollTop = 0;
+  }
+
   ngOnInit() {
   }
 

@@ -12,4 +12,9 @@ export class AppComponent {
     let bool = this.isIn;
     this.isIn = bool === false ? true : false;
   }
+
+  onNavToggle(){
+    document.body.scrollTop = document.documentElement.scrollTop = 0;
+    this.isIn = false;
+  }
 }

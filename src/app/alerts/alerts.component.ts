@@ -1,18 +1,10 @@
-import {Component, OnInit, Pipe, PipeTransform} from '@angular/core';
+import {Component, HostListener, OnInit} from '@angular/core';
 import { AlertsService } from './alerts.service';
 
 
 import 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 
-@Pipe({
-  name: 'reverse'
-})
-export class ReversePipe{
-  transform(value) {
-    return value.slice().reverse();
-  }
-}
 
 @Component({
   selector: 'app-alerts',
@@ -52,11 +44,18 @@ export class AlertsComponent implements OnInit {
 
   }
 
+  @HostListener ("window:scroll", [])
+  onWindowScroll() {
+      if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+        document.getElementById("myBtn").style.display = "block";
+      } else {
+        document.getElementById("myBtn").style.display = "none";
+      }
+    }
 
   onClickTop(){
     document.body.scrollTop = document.documentElement.scrollTop = 0;
   }
-
 
   ngOnInit() {
   }

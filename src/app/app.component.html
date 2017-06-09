@@ -12,17 +12,17 @@
     </div>
     <!-- Collection of nav links and other content for toggling -->
     <div class="collapse navbar-collapse " [ngClass]="{ 'in': isIn }">
-      <ul class="nav navbar-nav navbar-right">
-        <li><a [routerLink]="['/']">Home</a></li>
-        <li><a [routerLink]="['/vehicles']">Vehicles</a></li>
-        <li><a [routerLink]="['/maps']">Location</a></li>
-        <li><a [routerLink]="['/graphs']">Performance</a></li>
-        <li><a [routerLink]="['/alerts']">Alerts</a></li>
+      <ul class="nav navbar-nav navbar-right" (click)="onNavToggle()">
+        <li><a [routerLink]="['/']" (click)="onNavToggle()">Home</a></li>
+        <li><a [routerLink]="['/vehicles']" (click)="onNavToggle()">Vehicles</a></li>
+        <li><a [routerLink]="['/maps']" (click)="onNavToggle()">Location</a></li>
+        <li><a [routerLink]="['/graphs']" (click)="onNavToggle()">Performance</a></li>
+        <li><a [routerLink]="['/alerts']" (click)="onNavToggle()">Alerts</a></li>
       </ul>
     </div>
   </div>
 </nav>
 
-      <router-outlet></router-outlet>
+<router-outlet ></router-outlet>
 
 

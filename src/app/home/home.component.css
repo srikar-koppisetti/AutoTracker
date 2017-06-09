@@ -37,17 +37,33 @@ h1{
   position: relative;
 }
 
+
 .info{
   margin-top: 200px;
-  background-color: #E7E6F6;
-  color: white;
+  background-color: rgba(231, 230, 246,0.7);
   z-index: 2;
-  position: absolute;
+  position: relative;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
 }
 
-.tabs{
-  background-color: red;
-  color: white;
-  z-index: 2;
-  position: absolute;
+.box{
+  color: #321F45;
+  padding: 50px;
+  padding-right: 30px;
+}
+
+
+.icons{
+  font-size: 48px;
+}
+
+.redColor{
+  color: red;
+}
+
+.greenColor{
+  color: green;
 }

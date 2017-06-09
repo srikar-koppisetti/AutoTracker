@@ -1,25 +1,61 @@
 
 <div class="container text-center video">
-  <video autoplay loop id="video-background" muted plays-inline>
+  <video autoplay loop id="video-background" muted plays-inline poster="/assets/images/New-York-Jam.jpg" >
     <source src="/assets/videos/New-York-Jam.mp4" type="video/mp4">
   </video>
-  <h1 ><strong>AutoTracker</strong></h1>
+  <h1><strong>AutoTracker</strong></h1>
   <p><em>One place to know every thing about our vehicles.</em></p>
   <p>Find: <button class="btn btn-danger" [routerLink]="['/maps']"><strong>LOCATION</strong></button> ,
     <button class="btn btn-danger" [routerLink]="['/graphs']"><strong>PERFORMANCE</strong></button> ,
     <button class="btn btn-danger" [routerLink]="['/alerts']"><strong>ALERTS</strong></button></p>
 </div>
-<div class="container-fluid">
+
   <div class="row info">
-    <div class="col-xs-6">
+    <div class="row">
+      <div class="col-xs-6 box">
+        <i class="material-icons icons">info</i>
+        <h2>Vehicles Information </h2>
+        <br>
+        <p class="lead">You can know all the vehicles available in <strong>AutoTracker's</strong> garage. Click on <button class="btn btn-primary" [routerLink]="['/vehicles']" (click)="onClick()">Know More...</button></p>
 
+      </div>
+      <div class="col-xs-6 box ">
+        <i class="material-icons icons greenColor">location_on</i>
+        <h2>Location</h2>
+        <br>
+        <p class="lead">Know all the vehicles current location in <strong>AutoTracker's</strong> location tab. To know Click on <button class="btn btn-primary" [routerLink]="['/maps']" (click)="onClick()">Know More...</button></p>
 
-    <div class="col-xs-6">
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-xs-6 box ">
+        <i class="material-icons icons redColor">warning</i>
+        <h2>Alerts</h2>
+        <br>
+        <p class="lead">Know all the alerts form all the vehicles in <strong>AutoTracker</strong>. To know Click on <button class="btn btn-primary" [routerLink]="['/alerts']" (click)="onClick()">Know More...</button></p>
+
+      </div>
+      <div class="col-xs-6 box">
+        <i class="material-icons icons">assessment</i>
+        <h2>Performance</h2>
+        <br>
+        <p class="lead">Track performance of all vehicles available in <strong>AutoTracker</strong>. Click on <button class="btn btn-primary" [routerLink]="['/graphs']" (click)="onClick()">Know More...</button></p>
+
+      </div>
+
+    </div>
+    <hr>
+    <div class="row">
+
+      <div class="col-xs-12 box">
+        <p class="lead">To get the repo of this project follow to github and look for <strong>AutoTracker</strong></p>
+        <iframe src="https://ghbtns.com/github-btn.html?user=srikarslash&type=follow&count=true&size=large" frameborder="0" scrolling="0" width="220px" height="30px"></iframe>
+      </div>
 
     </div>
 
 
-
-
   </div>
-</div>
+
+

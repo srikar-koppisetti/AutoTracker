@@ -20,12 +20,14 @@
 
 .navbar-default .navbar-header  > a {
   color: #E8DFF0; /*Change active brand text color here*/
-  font-size: 36px;
+  font-size: 42px;
 }
 
-.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus{
   color: red;
   font-size: 18px;/*Sets the text hover color on navbar*/
 }
 
-
+.footer{
+  background-color: #E7E6F6;
+}
