@@ -1,0 +1,69 @@
+<div class="jumbotron">
+  <div class="container">
+    <div class="panel panel-default col-sm-9">
+      <div class="panel-body transparent">
+        <h1>ALERTS</h1>
+        <p>We save all the vehicle alerts in <strong><u>AutoTracker</u></strong>.</p>
+        <ul>
+          <li>To know all historical alerts of specific vehicle. Select <strong>Vehicle Name</strong> and click
+            <strong>GET HISTORY</strong></li>
+          <li>To know number of <strong>High Alerts</strong> in last <strong>2 Hours</strong> click <strong>GET HIGH ALERTS</strong></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container alert" >
+    <div class="row">
+      <div class="col-xs-9">
+        <form>
+          <div class="form-group">
+            <label for="">Select Vehicle</label>
+            <select class="form-control" name="vinNumber" [(ngModel)]="vin" >
+              <option value='1FMYU02143KB34432'>FORD ESCAPE (VIN: 1FMYU02143KB34432)</option>
+              <option value='1HGCR2F3XFA027534'>HONDA	ACCORD (VIN: 1HGCR2F3XFA027534)</option>
+              <option value='1VWAP7A35CC020276'>VOLKSWAGEN	PASSAT (VIN: 1VWAP7A35CC020276)</option>
+              <option value='1ZVBP8JS8A5159269'>FORD	MUSTANG (VIN: 1ZVBP8JS8A5159269)</option>
+              <option value='2T1BU4EE4DC919097'>TOYOTA	COROLLA (VIN: 2T1BU4EE4DC919097)</option>
+              <option value='3GCRKSE30AG105585'>CHEVROLET	SILVERADO (VIN: 3GCRKSE30AG105585)</option>
+              <option value='5J6RM3H50DL032829'>HONDA	CR-V (VIN: 5J6RM3H50DL032829)</option>
+              <option value='WA1CMAFE6BD002500'>AUDI	Q7 (VIN: WA1CMAFE6BD002500</option>
+              <option value='WBAFR1C50BC747531'>BMW	528 (VIN: WBAFR1C50BC747531)</option>
+              <option value='WP1AB29P63LA60179'>PORSCHE	CAYENNE (VIN: WP1AB29P63LA60179)</option>
+            </select>
+          </div>
+          <button class="btn btn-primary" (click)="onGetVinAlert()">GET HISTORY</button>
+        </form>
+        <table  class="table table-hover table-inverse">
+          <thead >
+            <tr class="table-head" >
+              <th>Priority</th>
+              <th>Time Stamp</th>
+              <th>Message</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr *ngFor="let alert of vinAlerts.slice().reverse()">
+              <th scope="row">{{alert.priority}}</th>
+              <td>{{alert.alertTimeStamp * 1000 | date:'medium' }}</td>
+              <td>{{alert.alertMessage}}</td>
+            </tr>
+          </tbody>
+        </table>
+        <button class="btn btn-primary pull-right" (click)="onClickTop()">Page Top</button>
+      </div>
+      <br>
+      <div class="col-xs-3 count text-center">
+        <p class="hidden-xs"><button class="btn btn-primary" (click)="onGetPeriod()">GET HIGH ALERTS</button> in last <br> 2 Hours.</p>
+        <p class="visible-xs"><button class="btn btn-primary" (click)="onGetPeriod()">CLICK</button> to get high alerts in last <br> 2 Hours.</p>
+        <h1 >{{alerts.length}}</h1>
+        <p >High Alerts</p>
+        <h6 >(2 Hours)</h6>
+      </div>
+      <button (click)="onClickTop()" id="myBtn" title="Go to top" >Top</button>
+    </div>
+</div>
+
+

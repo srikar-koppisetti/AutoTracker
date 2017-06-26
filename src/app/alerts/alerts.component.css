@@ -1,0 +1,73 @@
+.alert .row .count{
+  background-color: red;
+  padding: 30px;
+  color: white;
+}
+
+.alert .row .count p{
+  color: white;
+}
+
+.alert .row .count h1{
+  color: white;
+  font-size: 64px;
+
+}
+
+
+.alert p, label {
+  color : #521491;
+}
+
+
+.jumbotron {
+  background-color: #E7E6F6;
+  background-image: url('/assets/images/performance.jpeg');
+  height: 450px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 5%;
+  margin: 0;
+  padding: 1px;
+}
+
+.jumbotron h1{
+  color: #321F45;
+}
+
+.transparent{
+  background-color: rgba(254,254,254,0.8);
+}
+
+.panel{
+  background-color: transparent;
+  border: 1px #222;
+  padding-top: 100px;
+}
+
+li{
+  font-size: larger;
+}
+
+.jumbotron li, p{
+  color: #521491;
+}
+
+#myBtn {
+  display: none; /* Hidden by default */
+  position: fixed; /* Fixed/sticky position */
+  bottom: 20px; /* Place the button at the bottom of the page */
+  right: 30px; /* Place the button 30px from the right */
+  z-index: 99; /* Make sure it does not overlap */
+  border: none; /* Remove borders */
+  outline: none; /* Remove outline */
+  background-color: red; /* Set a background color */
+  color: white; /* Text color */
+  cursor: pointer; /* Add a mouse pointer on hover */
+  padding: 15px; /* Some padding */
+  border-radius: 10px; /* Rounded corners */
+}
+
+#myBtn:hover {
+  background-color: #555; /* Add a dark-grey background on hover */
+}

@@ -1,0 +1,42 @@
+<div class="jumbotron">
+  <div class="container">
+
+    <div class="panel panel-default col-sm-8">
+      <div class="panel-body transparent">
+        <h1>Our Vehicles</h1>
+        <p>We have some of the best vehicles in <strong><u>AutoTracker</u></strong> garage.</p>
+        <p> To know vehicles available. Please click on <strong>ALL VEHICLES</strong> button below.<br><br>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div class="container">
+    <br>
+    <p> Click <button class="btn btn-primary" (click)="onClick()">ALL VEHICLES</button> to know all the vehicles available with AutoTracker.</p>
+
+    <table class="table table-hover">
+      <thead >
+      <tr class="table-head" >
+        <th>Vin</th>
+        <th>Make</th>
+        <th>Model</th>
+        <th>Year</th>
+        <th>Red Line RPM</th>
+        <th>Max Fuel Volume</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let car of auto">
+        <th scope="row">{{car.vin}}</th>
+        <td>{{car.make}}</td>
+        <td>{{car.model}}</td>
+        <td>{{car.year}}</td>
+        <td>{{car.redlineRpm}}</td>
+        <td>{{car.maxFuelVolume}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+

@@ -1,0 +1,33 @@
+.home{
+  background-color: #321F45;
+}
+
+.container{
+  background-color: #F1EEF4;
+}
+
+.navbar-default  {
+  color: #321F45; /*BACKGROUND color for active*/
+  background-color: #321F45;
+  border-radius: 0px;
+  margin: 0;
+  padding: 1px;
+}
+
+.navbar-default .navbar-nav > li > a {
+  color: #E8DFF0; /*Change active text color here*/
+}
+
+.navbar-default .navbar-header  > a {
+  color: #E8DFF0; /*Change active brand text color here*/
+  font-size: 42px;
+}
+
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus{
+  color: red;
+  font-size: 18px;/*Sets the text hover color on navbar*/
+}
+
+.footer{
+  background-color: #E7E6F6;
+}

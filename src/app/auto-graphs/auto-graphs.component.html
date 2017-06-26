@@ -1,0 +1,78 @@
+<div class="jumbotron">
+  <div class="container">
+    <div class="row">
+      <div class="panel panel-default col-sm-8">
+        <div class="panel-body transparent">
+          <h1>Vehicle Performance</h1>
+          <p>Looking for performance? You've come to the right place! </p>
+          <p> You'll find all the vehicles performance right here at <strong><u>AutoTracker</u></strong></p><br><br>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4 fill-form">
+          <p class="text-center">Get graph of vehicles in certain period</p>
+          <form>
+            <div class="form-group">
+              <label for="">Select Vehicle</label>
+              <select class="form-control" name="vinNumber" [(ngModel)]="vin" >
+                <option value='1FMYU02143KB34432'>FORD ESCAPE (VIN: 1FMYU02143KB34432)</option>
+                <option value='1HGCR2F3XFA027534'>HONDA	ACCORD (VIN: 1HGCR2F3XFA027534)</option>
+                <option value='1VWAP7A35CC020276'>VOLKSWAGEN	PASSAT (VIN: 1VWAP7A35CC020276)</option>
+                <option value='1ZVBP8JS8A5159269'>FORD	MUSTANG (VIN: 1ZVBP8JS8A5159269)</option>
+                <option value='2T1BU4EE4DC919097'>TOYOTA	COROLLA (VIN: 2T1BU4EE4DC919097)</option>
+                <option value='3GCRKSE30AG105585'>CHEVROLET	SILVERADO (VIN: 3GCRKSE30AG105585)</option>
+                <option value='5J6RM3H50DL032829'>HONDA	CR-V (VIN: 5J6RM3H50DL032829)</option>
+                <option value='WA1CMAFE6BD002500'>AUDI	Q7 (VIN: WA1CMAFE6BD002500</option>
+                <option value='WBAFR1C50BC747531'>BMW	528 (VIN: WBAFR1C50BC747531)</option>
+                <option value='WP1AB29P63LA60179'>PORSCHE	CAYENNE (VIN: WP1AB29P63LA60179)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="">Select Time</label>
+              <select class="form-control" name="time" [(ngModel)]="time" >
+                <option value= 15>15 Minutes</option>
+                <option value= 25>25 Minutes</option>
+                <option value= 35>35 Minutes</option>
+                <option value= 45>45 Minutes</option>
+                <option value= 55>55 Minutes</option>
+                <option value= 60>1 Hour</option>
+                <option value= 90>1 Hour 30 Minutes</option>
+                <option value= 120>2 Hours</option>
+                <option value= 180>3 Hours</option>
+                <option value= 300>5 Hours</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="">Select Signal</label>
+              <select class="form-control" name="signal" [(ngModel)]="signal" >
+                <option value= 'engineHp'>Engine Horse Power</option>
+                <option value= 'engineRpm'>Engine RPM</option>
+                <option value= 'fuelVolume'>Fuel Volume</option>
+                <option value= 'speed'>Vehicle Speed</option>
+              </select>
+            </div>
+
+            <button class="btn btn-primary" (click)="onGetReadings(signal)">Get Graph</button>
+
+          </form>
+          <br>
+
+      </div>
+      <div class="col-md-7 col-md-offset-1 graph">
+          <div style="display: block;">
+            <canvas baseChart width="300" height="200"
+                    [datasets]="lineChartData"
+                    [labels]="lineChartLabels"
+                    [options]="lineChartOptions"
+                    [colors]="lineChartColors"
+                    [legend]="lineChartLegend"
+                    [chartType]="lineChartType"></canvas>
+          </div>
+      </div>
+    </div>
+
+
+  </div>
+</div>
+
